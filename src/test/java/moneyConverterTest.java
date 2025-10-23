@@ -1,3 +1,4 @@
+import org.example.moneyConverter;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
@@ -15,7 +16,7 @@ public class moneyConverterTest {
         @Test
         @DisplayName("Should convert 100 USD to 92 EUR")
         public void testConvert100USDTo92EUR() {
-            double USD = 100.00;
+            double usd = 100.00;
             double expectedEUR = 92.00;
             double actualEUR = moneyConverter.convertUSDtoEUR(usd);
             assertEquals(expectedEUR, actualEUR, 0.001);
