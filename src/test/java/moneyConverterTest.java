@@ -1,4 +1,4 @@
-import org.example.Calculator;
+
 import org.example.moneyConverter;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
@@ -9,7 +9,7 @@ import java.math.BigDecimal;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-@DisplayName("Moneyconverter TDD test demo")
+@DisplayName("money converter TDD test demo")
 public class moneyConverterTest {
 
     @Nested
@@ -51,5 +51,6 @@ public class moneyConverterTest {
             assertThrows(IllegalArgumentException.class, () -> moneyConverter.convertUsdToEur(usd));
         }
     }
+
 
 }

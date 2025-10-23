@@ -12,7 +12,8 @@ public class moneyConverter {
         }
 
         BigDecimal eur = usd.multiply(EXCHANGE_RATE);
-        return eur.setScale(2, RoundingMode.HALF_UP); // Round to 2 decimal places
+        // Round to 2 decimal places
+        return eur.setScale(2, RoundingMode.HALF_UP);
     }
 
 }
