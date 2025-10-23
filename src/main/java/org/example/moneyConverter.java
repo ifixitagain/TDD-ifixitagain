@@ -1,11 +1,18 @@
 package org.example;
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 
 public class moneyConverter {
-    public static double convertUSDtoEUR(double usd){
-        if (usd < 0) {
-            throw new IllegalArgumentException("USD should not be negative");
+
+    private static final BigDecimal EXCHANGE_RATE = new BigDecimal("0.92");
+
+    public static BigDecimal convertUsdToEur(BigDecimal usd) {
+        if (usd.compareTo(BigDecimal.ZERO) < 0) {
+            throw new IllegalArgumentException("USD amount cannot be negative");
         }
-        double eur = usd * 0.92;
-        return Math.round(eur * 100.0) / 100.0;
+
+        BigDecimal eur = usd.multiply(EXCHANGE_RATE);
+        return eur.setScale(2, RoundingMode.HALF_UP); // Round to 2 decimal places
     }
+
 }
