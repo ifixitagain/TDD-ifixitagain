@@ -12,6 +12,7 @@ public class timeConverterTest {
     @DisplayName("Time converter tests")
     class timeconvertertests{
 
+        @Test
     @DisplayName("should convert 60 seconds to 1 minute")
     public void secondsToMinutes(){
         int seconds = 60;
