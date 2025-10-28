@@ -50,7 +50,78 @@ public class moneyConverterTest {
             BigDecimal usd = new BigDecimal("-1");
             assertThrows(IllegalArgumentException.class, () -> moneyConverter.convertUsdToEur(usd));
         }
+       /* @Test
+        public void validcatePositiveNumber(BigDecimal value) {
+            if (value == null || moneyConverter.convertUsdToEur(BigDecimal.ZERO).compareTo(BigDecimal.ZERO) < 0) {
+                throw new IllegalArgumentException("Amount cannot be negative");}
+        }*/
     }
 
+    @Nested
+    @DisplayName("EUR to USD Conversion")
+    class EURtoUSDConvertion {
+
+        @Test
+        @DisplayName("Should convert 92 eur to 100 EUR")
+        public void testConvert92Eur() {
+            BigDecimal eur = new BigDecimal("92");
+            BigDecimal expected = new BigDecimal("100.00");
+            BigDecimal actual = moneyConverter.convertEurToUsd(eur);
+            assertEquals(expected, actual);
+        }
+        @Test
+        @DisplayName("Should maintain value through round-trip conversion")
+        public void testRoundTripConversion() {
+            BigDecimal originalUsd = new BigDecimal("100.00");
+            BigDecimal eur = moneyConverter.convertUsdToEur(originalUsd);
+            BigDecimal usdBack = moneyConverter.convertEurToUsd(eur);
+
+            assertEquals(originalUsd, usdBack);
+        }
+
+    }
+    @Nested
+    @DisplayName("USD to SEK conversion")
+    class USDtoSEKConversion {
+
+        @Test
+        @DisplayName("Should convert 100 USD to 1050 SEK")
+        public void testConvert100UsdTosek() {
+            BigDecimal usd = new BigDecimal("100");
+            BigDecimal expected = new BigDecimal("1050.00");
+            BigDecimal actualSek = moneyConverter.conversionUSDtoSEK(usd);
+            assertEquals(expected, actualSek);
+        }
+        @Test
+        @DisplayName("Should convert 10 USD to 105 SEK")
+        public void testConvert10UsdTosek() {
+            BigDecimal usd = new BigDecimal("10");
+            BigDecimal expected = new BigDecimal("105.00");
+            BigDecimal actualSek = moneyConverter.conversionUSDtoSEK(usd);
+            assertEquals(expected, actualSek);
+        }
+    }
+    @Nested
+    @DisplayName("SEK to USD conversion")
+    class SEKtoUSDConversion {
+
+        @Test
+        @DisplayName("Should convert 1050 SEK to 100 USD")
+        public void testConvert1050SEK() {
+            BigDecimal sek = new BigDecimal("1050");
+            BigDecimal expected = new BigDecimal("100.00");
+            BigDecimal actual = moneyConverter.conversionSEKtoUSD(sek);
+            assertEquals(expected, actual);
+        }
+        @Test
+        @DisplayName("Should maintain value through round-trip conversion")
+        public void testRoundTripConversion() {
+            BigDecimal originalUsd = new BigDecimal("1050.00");
+            BigDecimal eur = moneyConverter.convertUsdToEur(originalUsd);
+            BigDecimal usdBack = moneyConverter.convertEurToUsd(eur);
+
+            assertEquals(originalUsd, usdBack);
+        }
+    }
 
 }
