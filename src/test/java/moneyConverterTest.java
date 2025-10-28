@@ -134,8 +134,25 @@ public class moneyConverterTest {
             BigDecimal amountTwo = new BigDecimal("13.00");
             BigDecimal expected = new BigDecimal("38.00");
 
-            BigDecimal result = moneyAdd.add(amountOne, amountTwo);
+            BigDecimal result = moneyConverter.moneyAddition(amountOne, amountTwo);
             assertEquals(expected, result);
+        }
+        @Test
+        @DisplayName("Should add zero to amount")
+        public void testMoneyAdditionZero() {
+            BigDecimal amountOne = new BigDecimal("25.00");
+            BigDecimal amountTwo = new BigDecimal("0.00");
+            BigDecimal expected = new BigDecimal("25.00");
+
+            BigDecimal result = moneyConverter.moneyAddition(amountOne, amountTwo);
+            assertEquals(expected, result);
+        }
+        @Test
+        @DisplayName("Should throw exception for negative amounts")
+        public void testMoneyAdditionNegateException() {
+            BigDecimal amountOne = new BigDecimal("-25.00");
+            BigDecimal amountTwo = new BigDecimal("-13.00");
+            assertThrows(IllegalArgumentException.class, () -> moneyConverter.moneyAddition(amountOne, amountTwo));
         }
     }
 }

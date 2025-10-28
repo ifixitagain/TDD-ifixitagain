@@ -42,7 +42,14 @@ public class moneyConverter {
         return  usd.setScale(2, RoundingMode.HALF_UP);
     }
 
-    /*public static BigDecimal moneyAdd(BigDecimal amountOne, BigDecimal amountTwo) {
-
-    }*/
+    public static BigDecimal moneyAddition(BigDecimal amountOne, BigDecimal amountTwo) {
+        if (amountOne == null || amountTwo == null){
+            throw new IllegalArgumentException("amountOne and amountTwo cannot be null");
+        }
+        if (amountOne.compareTo(BigDecimal.ZERO) < 0 || amountTwo.compareTo(BigDecimal.ZERO) < 0) {
+            throw new IllegalArgumentException("amountOne and amountTwo cannot be negative");
+        }
+        BigDecimal result = amountOne.add(amountTwo);
+        return result.setScale(2, RoundingMode.HALF_UP);
+    }
 }
