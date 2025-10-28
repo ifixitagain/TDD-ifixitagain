@@ -101,6 +101,7 @@ public class moneyConverterTest {
             assertEquals(expected, actualSek);
         }
     }
+
     @Nested
     @DisplayName("SEK to USD conversion")
     class SEKtoUSDConversion {
@@ -123,5 +124,18 @@ public class moneyConverterTest {
             assertEquals(originalUsd, usdBack);
         }
     }
+    @Nested
+    @DisplayName("Money Addition")
+    class moneyAddition {
+        @Test
+        @DisplayName("Should add two money amounts")
+        public void testMoneyAddition() {
+            BigDecimal amountOne = new BigDecimal("25.00");
+            BigDecimal amountTwo = new BigDecimal("13.00");
+            BigDecimal expected = new BigDecimal("38.00");
 
+            BigDecimal result = moneyAdd.add(amountOne, amountTwo);
+            assertEquals(expected, result);
+        }
+    }
 }

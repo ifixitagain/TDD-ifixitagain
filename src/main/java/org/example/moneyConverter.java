@@ -41,4 +41,8 @@ public class moneyConverter {
         BigDecimal usd = sek.divide(USD_TO_SEK_RATE, 2, RoundingMode.HALF_UP);
         return  usd.setScale(2, RoundingMode.HALF_UP);
     }
+
+    /*public static BigDecimal moneyAdd(BigDecimal amountOne, BigDecimal amountTwo) {
+
+    }*/
 }
